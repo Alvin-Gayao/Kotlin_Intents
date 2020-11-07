@@ -20,7 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="15dp"
-        android:text="first task" />
+        android:text="Open Camera" />
 
     <Button
         android:id="@+id/task_btn2"
@@ -28,21 +28,21 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="15dp"
-        android:text="Second task"/>
+        android:text="Open Browser"/>
     <Button
         android:id="@+id/task_btn3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="15dp"
-        android:text="third task"/>
+        android:text="Send Message"/>
     <Button
         android:id="@+id/task_btn4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="15dp"
-        android:text="fourth task"/>
+        android:text="Open Microsoft Word"/>
 
     <Button
         android:id="@+id/task_btn5"
@@ -50,5 +50,5 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="15dp"
-        android:text="fifth task" />
+        android:text="Magic" />
 </LinearLayout>

@@ -1,11 +1,16 @@
 package com.example.myloginapplication
 
+import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.MediaStore
 import android.view.View
 import android.widget.Button
 import android.widget.Toast
+import kotlinx.android.synthetic.main.activities.*
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.tasks.*
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -14,11 +19,12 @@ class MainActivity : AppCompatActivity() {
 
        login_btn.setOnClickListener {
 
-           var status=if (username_in.text.toString().equals("alvingayao")
-                   && password_in.text.toString().equals("password")) "Logged In Successfully!"
+           if (username_in.text.toString().equals("alvingayao")
+                   && password_in.text.toString().equals("password")) {
 
+               showActivities()
+                   }
            else "Login Failed!"
-           Toast.makeText(this,status,Toast.LENGTH_SHORT).show()
        }
     }
 
@@ -26,10 +32,47 @@ class MainActivity : AppCompatActivity() {
         activities_layout.visibility=View.VISIBLE
         tasks_layout.visibility=View.GONE
         home_in.visibility=View.GONE
+
+        task_btn.setOnClickListener{
+            showTasks()
+        }
     }
     private fun showTasks(){
         activities_layout.visibility=View.GONE
         tasks_layout.visibility=View.VISIBLE
         home_in.visibility=View.GONE
+
+        task_btn1.setOnClickListener {
+            val intent1 = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+            startActivity(intent1)
+        }
+        task_btn2.setOnClickListener {
+            val intent2 = Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/Alvin-Gayao/Kotlin_Intents/"))
+            startActivity(intent2)
+        }
+        task_btn3.setOnClickListener {
+            val intent3 = Intent(Intent.ACTION_SEND)
+            intent3.putExtra(Intent.EXTRA_TEXT, "android studio")
+            intent3.type="text/plain"
+            startActivity(intent3)
+        }
+        task_btn4.setOnClickListener {
+            openApp()
+        }
+        task_btn5.setOnClickListener {
+            Toast.makeText(applicationContext,"Sorry! No intent was placed in this button.",Toast.LENGTH_SHORT).show()
+        }
     }
+    private fun openApp(){
+        val intent4 = Intent(Intent.ACTION_VIEW)
+        intent4.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        intent4.setPackage("com.android.microsoftword")
+        if(intent4.resolveActivity(this.packageManager) != null)
+        {
+            startActivity(intent4)
+        }
+        else
+            Toast.makeText(applicationContext,"The intent failed due to application cannot be found!",Toast.LENGTH_SHORT).show()
+    }
+
 }
